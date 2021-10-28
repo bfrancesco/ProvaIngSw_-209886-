@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MyListUtilTest {
@@ -41,4 +46,34 @@ public class MyListUtilTest {
 			assertEquals(expectedDesc.get(i), obtained.get(i));
 		}
 	}
+	
+	@Test(expected = NullPointerException.class)
+	public void sortAscNullListException() {
+		util = new MyListUtil();
+		util.sort(null , 0);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void sortDescNullListException() {
+		util = new MyListUtil();
+		util.sort(null , 1);
+	}
+	
+	/*
+	 * Stampo prima di ogni test la data e l'ora in cui inizia
+	 * Se volessi stampare l'inizio di tutti i test da fare dovrei inserire BeforeClass e il metodo farlo static
+	 */
+	@Before
+	public void stampaOraInizio() {
+		System.out.println("Inizio :" + new DateTime().toString());
+	}
+	
+	//Stampo dopo ogni test la data e l'ora in cui è terminato
+	//Se volessi stampare la fine di tutti i test fatti dovrei inserire AfterClass e il metodo farlo static
+	@After
+	public void stampaOraFine() {
+		System.out.println("Fine :" + new DateTime().toString());
+	}
+	
+	
 }
